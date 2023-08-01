@@ -1,87 +1,6 @@
 import 'dart:io';
-
-class Task {
-  String name;
-  String description;
-  DateTime date;
-  bool isDone;
-
-  Task(this.name, this.description, this.date, this.isDone);
-
-  void updateTask(String newName, String newDescription, DateTime newDate) {
-    name = newName;
-    description = newDescription;
-    date = newDate;
-  }
-
-  void markAsDone() {
-    isDone = true;
-  }
-
-  void markAsPending() {
-    isDone = false;
-  }
-
-  @override
-  String toString() {
-    return 'Task: $name\nDescription: $description\nDate: $date\nStatus: ${isDone ? "Completed" : "Pending"}\n';
-  }
-}
-
-class TaskManager {
-  List<Task> tasks = [];
-
-  void addTask(String name, String description, DateTime date) {
-    tasks.add(Task(name, description, date, false));
-  }
-
-  void viewAllTasks() {
-    if (tasks.isEmpty) {
-      print("No tasks found.");
-    } else {
-      for (var task in tasks) {
-        print(task);
-      }
-    }
-  }
-
-  void viewCompletedTasks() {
-    final completedTasks = tasks.where((task) => task.isDone).toList();
-    if (completedTasks.isEmpty) {
-      print("No completed tasks found.");
-    } else {
-      for (var task in completedTasks) {
-        print(task);
-      }
-    }
-  }
-
-  void viewPendingTasks() {
-    final pendingTasks = tasks.where((task) => !task.isDone).toList();
-    if (pendingTasks.isEmpty) {
-      print("No pending tasks found.");
-    } else {
-      for (var task in pendingTasks) {
-        print(task);
-      }
-    }
-  }
-
-  void editTask(
-      Task task, String newName, String newDescription, DateTime newDate) {
-    if (tasks.contains(task)) {
-      task.updateTask(newName, newDescription, newDate);
-      print("Task updated successfully.");
-    } else {
-      print("Task not found in the task list.");
-    }
-  }
-
-  void deleteTask(Task task) {
-    tasks.remove(task);
-    print("Task ${task.name} deleted successfully.");
-  }
-}
+import 'taskManager.dart';
+import 'task.dart'; // Import the TaskManager class from 'taskManager.dart
 
 void main() {
   TaskManager taskManager = TaskManager();
@@ -101,6 +20,7 @@ void main() {
 
     final selected = int.parse(choice);
     print(selected);
+
     switch (selected) {
       case 1:
         stdout.write('Enter task name: ');
