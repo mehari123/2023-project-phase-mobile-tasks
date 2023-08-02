@@ -1,4 +1,4 @@
-import 'task.dart';
+import '../on-boarding/task.dart';
 
 class TaskManager {
   List<Task> tasks = [];
