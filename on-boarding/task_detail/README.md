@@ -1,6 +1,7 @@
-# task_dtail
+# todo list
 
-A new Flutter project.
+A ne![photo_2023-08-04_19-33-04](https://github.com/mehari123/2023-project-phase-mobile-tasks/assets/88460961/3c164ada-6cfa-4702-89d2-4e527210d901)
+w Flutter project.
 
 ## Getting Started
 
