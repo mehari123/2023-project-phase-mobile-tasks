@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'task_detail.dart';
+import '../main.dart';
 
-class task_list extends StatelessWidget {
+class task_list extends StatefulWidget {
   const task_list({super.key});
 
+  @override
+  State<task_list> createState() => _task_listState();
+}
+
+class _task_listState extends State<task_list> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,10 +30,7 @@ class task_list extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => task_detail()),
-                );
+                Navigator.pushNamed(context, "/taskdetail");
                 // Add your onPressed logic here!
               },
               child: Container(

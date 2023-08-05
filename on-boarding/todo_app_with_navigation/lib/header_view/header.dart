@@ -8,17 +8,12 @@ class header extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        ElevatedButton(
+        IconButton(
+          icon: Icon(Icons.arrow_back, color: Color.fromARGB(255, 0, 0, 0)),
           onPressed: () {
+            // Add your back button logic here
             Navigator.pop(context);
           },
-          child: IconButton(
-            icon: Icon(Icons.arrow_back, color: Color.fromARGB(255, 0, 0, 0)),
-            onPressed: () {
-              // Add your back button logic here
-              Navigator.pop(context);
-            },
-          ),
         ),
         Text(
           "Todo List",
