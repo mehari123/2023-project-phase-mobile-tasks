@@ -1,16 +1,23 @@
 import 'task.dart';
 
 class TaskManager {
-  Task task1 = Task("U", "UI/UX \n Desing App", DateTime.now(), false);
-  Task task2 = Task("V", "Candidate selection", DateTime.now(), false);
-  Task task3 = Task("F", "Foot ball 3", DateTime.now(), false);
+  Task task1 =
+      Task("title1", "UI/UX \n Desing App", DateTime.now().toString(), false);
+  Task task2 =
+      Task("title2", "Candidate selection", DateTime.now().toString(), false);
+  Task task3 = Task("title3", "Foot ball 3", DateTime.now().toString(), false);
   List<Task> tasks = [];
 
+  TaskManager() {
+    defaultTasks();
+  }
+
   void defaultTasks() {
+    tasks = [];
     tasks.addAll([task1, task2, task3]);
   }
 
-  void addTask(String name, String description, DateTime date) {
+  void addTask(String name, String description, String date) {
     tasks.add(Task(name, description, date, false));
   }
 
@@ -47,11 +54,11 @@ class TaskManager {
   }
 
   void updateTask(
-      Task task, String newName, String newDescription, DateTime newDate) {
-    if (tasks.contains(task)) {
-      task.name = newName;
-      task.description = newDescription;
-      task.date = newDate;
+      int ind, String newName, String newDescription, String newDate) {
+    if (tasks[ind] != null) {
+      tasks[ind].name = newName;
+      tasks[ind].description = newDescription;
+      tasks[ind].date = newDate;
       print("Task updated successfully.");
     } else {
       print("Task not found in the task list.");

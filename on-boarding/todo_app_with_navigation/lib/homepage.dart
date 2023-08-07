@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'header_view/header.dart';
 import 'image_view/image.dart';
 import 'components/task_list.dart';
+import 'models/task.dart';
+import 'models/taskManager.dart';
 
 class homepage extends StatelessWidget {
   const homepage({super.key});
@@ -51,7 +53,11 @@ class Frame1 extends StatelessWidget {
           ),
           child: TextButton(
             onPressed: () {
-              Navigator.pushNamed(context, "/addtask");
+              TaskManager taskm = TaskManager();
+              Task task = Task("", "", "", false);
+
+              Navigator.pushNamed(context, "/addtask",
+                  arguments: [task, taskm.tasks.length]);
             },
             child: Text("Create task"),
           ),

@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
-import 'task_detail.dart';
-import '../main.dart';
+import '../models/task.dart';
+import '../models/taskManager.dart';
 
 class task_list extends StatefulWidget {
-  const task_list({super.key});
+  const task_list({Key? key}) : super(key: key);
 
   @override
-  State<task_list> createState() => _task_listState();
+  State<task_list> createState() => _TaskListState();
 }
 
-class _task_listState extends State<task_list> {
+class _TaskListState extends State<task_list> {
+  TaskManager taskManager = TaskManager();
+
+  @override
+  void initState() {
+    super.initState();
+    taskManager.defaultTasks();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
-        height: 400,
-        margin: EdgeInsets.only(left: 15, right: 15, top: 20),
+      height: 400,
+      margin: EdgeInsets.only(left: 15, right: 15, top: 20),
+      child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -28,12 +37,12 @@ class _task_listState extends State<task_list> {
                 fontSize: 18,
               ),
             ),
-            TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, "/taskdetail");
-                // Add your onPressed logic here!
-              },
-              child: Container(
+            ListView.builder(
+              shrinkWrap: true,
+              itemCount: taskManager.tasks.length,
+              itemBuilder: (context, index) {
+                Task task = taskManager.tasks[index];
+                return Container(
                   padding: EdgeInsets.all(15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
@@ -45,7 +54,7 @@ class _task_listState extends State<task_list> {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Text(
-                        'U',
+                        task.name,
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 22,
@@ -53,192 +62,65 @@ class _task_listState extends State<task_list> {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      Text(
-                        "UI/UX \n Design App",
-                        textAlign: TextAlign.left,
-                        style: TextStyle(
-                          color: Color.fromARGB(255, 0, 0, 0),
-                          fontFamily: "Roboto",
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                        ),
+                      IconButton(
+                        onPressed: () async {
+                          // Add task button is pressed
+                          // You can navigate to the screen where you add tasks here
+                          // For example:
+
+                          List? args = await Navigator.pushNamed(
+                            context,
+                            '/addtask',
+                            arguments: [task, index],
+                          ) as List?;
+                          Task? newTask = args?[0] ??
+                              Task("task 1", "description", "02-05-26", false);
+                          int ind = args?[1] ?? 0;
+                          print(
+                              "argssargssargsargssargsargssargsargssargsargssargsargssargsargssargsargssargsargssargs");
+                          print(args);
+                          if (newTask != null) {
+                            taskManager.updateTask(ind, newTask.name,
+                                newTask.description, newTask.date);
+                          }
+                        },
+                        icon: Icon(Icons.edit),
                       ),
                       Container(
-                          width: 150,
-                          child: Row(children: [
-                            Text(
-                              "April 20, 2021",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                color: Color.fromARGB(255, 0, 0, 0),
-                                fontFamily: "Roboto",
-                                fontWeight: FontWeight.w700,
-                                fontSize: 18,
-                              ),
-                            ),
+                        width: 150,
+                        child: Row(
+                          children: [
+                            // Text(
+                            //   task.date
+                            //       .toString(), // Format this date as you want
+                            //   textAlign: TextAlign.left,
+                            //   style: TextStyle(
+                            //     color: Color.fromARGB(255, 0, 0, 0),
+                            //     fontFamily: "Roboto",
+                            //     fontWeight: FontWeight.w700,
+                            //     fontSize: 18,
+                            //   ),
+                            // ),
                             Icon(
-                              IconData(0x007C, fontFamily: 'MaterialIcons'),
-                              color: Color.fromARGB(255, 240, 6, 6),
+                              task.isDone
+                                  ? Icons.check_circle
+                                  : Icons.error_outline,
+                              color: task.isDone
+                                  ? Color.fromARGB(255, 1, 114, 25)
+                                  : Color.fromARGB(255, 240, 6, 6),
                               size: 28,
                             ),
-                          ]))
+                          ],
+                        ),
+                      ),
                     ],
-                  )),
+                  ),
+                );
+              },
             ),
-            Container(
-                padding: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Color.fromARGB(255, 250, 250, 250),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      'U',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22,
-                        fontFamily: 'Inter',
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Text(
-                      "UI/UX \n Design App",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontFamily: "Roboto",
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                      ),
-                    ),
-                    Container(
-                        width: 150,
-                        child: Row(children: [
-                          Text(
-                            "April 20, 2021",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: "Roboto",
-                              fontWeight: FontWeight.w700,
-                              fontSize: 18,
-                            ),
-                          ),
-                          Icon(
-                            IconData(0x007C, fontFamily: 'MaterialIcons'),
-                            color: Color.fromRGBO(1, 114, 25, 1),
-                            size: 28,
-                          ),
-                        ]))
-                  ],
-                )),
-            Container(
-                padding: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Color.fromARGB(255, 250, 250, 250),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      'V',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22,
-                        fontFamily: 'Inter',
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Text(
-                      "Candiate selction",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontFamily: "Roboto",
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                      ),
-                    ),
-                    Container(
-                        width: 150,
-                        child: Row(children: [
-                          Text(
-                            "April 20, 2021",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: "Roboto",
-                              fontWeight: FontWeight.w700,
-                              fontSize: 18,
-                            ),
-                          ),
-                          Icon(
-                            IconData(0x007C, fontFamily: 'MaterialIcons'),
-                            color: Color.fromARGB(255, 240, 217, 6),
-                            size: 28,
-                          ),
-                        ]))
-                  ],
-                )),
-            Container(
-                padding: EdgeInsets.all(15),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Color.fromARGB(255, 250, 250, 250),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(
-                      'F',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 22,
-                        fontFamily: 'Inter',
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    Text(
-                      "Foot ball \n cu Drying",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 0, 0, 0),
-                        fontFamily: "Roboto",
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
-                      ),
-                    ),
-                    Container(
-                        width: 150,
-                        child: Row(children: [
-                          Text(
-                            "April 20, 2021",
-                            textAlign: TextAlign.left,
-                            style: TextStyle(
-                              color: Color.fromARGB(255, 0, 0, 0),
-                              fontFamily: "Roboto",
-                              fontWeight: FontWeight.w700,
-                              fontSize: 18,
-                            ),
-                          ),
-                          Icon(
-                            IconData(0x007C, fontFamily: 'MaterialIcons'),
-                            color: Color.fromARGB(255, 240, 6, 6),
-                            size: 28,
-                          ),
-                        ]))
-                  ],
-                )),
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
