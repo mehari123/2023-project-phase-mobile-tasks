@@ -2,9 +2,11 @@
 
 A new Flutter project.
 
-## Getting Started
+## Getting Started![photo_2023-08-07_10-22-54](https://github.com/mehari123/2023-project-phase-mobile-tasks/assets/88460961/7df52d1c-cef9-4fdc-83ef-071f11166379)
 
-This project is a starting point for a Flutter application.
+
+This project is a starting![photo_2023-08-07_10-23-03](https://github.com/mehari123/2023-project-phase-mobile-tasks/assets/88460961/795d7ae3-8264-4d7e-ac19-2243b9656c48)
+ point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
 
