@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
 import '../header_view/header.dart';
+import '../models/task.dart';
 
 class add_task extends StatelessWidget {
-  const add_task({super.key});
+  add_task({super.key});
+
+  final modal_route = 'addtask';
+  final TextEditingController taskNameController = TextEditingController();
+  final TextEditingController dueDateController = TextEditingController();
+  final TextEditingController descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as List;
+    final ind = args[1];
+    final task = args[0];
+
     return Material(
       child: Container(
         width: 390,
@@ -59,12 +69,14 @@ class add_task extends StatelessWidget {
                                                 Color.fromARGB(255, 238, 0, 0),
                                           )),
                                       TextField(
+                                        controller: taskNameController,
                                         maxLines: 1,
                                         style: TextStyle(
                                             color: Color.fromARGB(
                                                 255, 21, 21, 21)),
                                         decoration: InputDecoration(
-                                          hintText: 'UI/UX App Design',
+                                          hintText:
+                                              '${task.name ?? 'your task title'}',
                                           filled: true,
                                           fillColor: Color.fromARGB(
                                               255, 211, 211, 211),
@@ -95,12 +107,14 @@ class add_task extends StatelessWidget {
                                                 Color.fromARGB(255, 238, 0, 0),
                                           )),
                                       TextField(
+                                        controller: dueDateController,
                                         style: TextStyle(
                                             color: Color.fromARGB(
                                                 255, 21, 21, 21)),
                                         maxLines: 1,
                                         decoration: InputDecoration(
-                                          hintText: 'April 29,2023 12:30 AM',
+                                          hintText:
+                                              "${task.date ?? 'your due date'}",
                                           filled: true,
                                           fillColor: Color.fromARGB(
                                               255, 229, 229, 229),
@@ -132,13 +146,14 @@ class add_task extends StatelessWidget {
                                                 Color.fromARGB(255, 238, 0, 0),
                                           )),
                                       TextField(
+                                        controller: descriptionController,
                                         maxLines: 2,
                                         style: TextStyle(
                                             color: Color.fromARGB(
                                                 255, 21, 21, 21)),
                                         decoration: InputDecoration(
                                           hintText:
-                                              'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua',
+                                              "${task.description ?? 'ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua'}",
                                           filled: true,
                                           fillColor: Color.fromARGB(
                                               255, 203, 203, 203),
@@ -188,7 +203,15 @@ class add_task extends StatelessWidget {
                       ],
                     ),
                     child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Task newTask = Task(
+                          taskNameController.text,
+                          descriptionController.text,
+                          dueDateController.text,
+                          false,
+                        );
+                        Navigator.pop(context, [newTask, ind]);
+                      },
                       child: Text("Add task"),
                     )),
               ),
