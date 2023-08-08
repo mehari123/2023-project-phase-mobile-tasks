@@ -3,7 +3,7 @@ import '../models/task.dart';
 import '../models/taskManager.dart';
 
 class task_list extends StatefulWidget {
-  const task_list({Key? key}) : super(key: key);
+  const task_list(TaskManager mockTaskManager, {Key? key}) : super(key: key);
 
   @override
   State<task_list> createState() => _TaskListState();
@@ -43,6 +43,7 @@ class _TaskListState extends State<task_list> {
               itemBuilder: (context, index) {
                 Task task = taskManager.tasks[index];
                 return Container(
+                  key: Key("Container"),
                   padding: EdgeInsets.all(15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),

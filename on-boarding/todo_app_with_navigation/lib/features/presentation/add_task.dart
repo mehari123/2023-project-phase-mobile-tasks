@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
-import '../header_view/header.dart';
-import '../models/task.dart';
+import '../../header_view/header.dart';
+import '../../models/task.dart';
 
 class add_task extends StatelessWidget {
   add_task({super.key});
 
-  final modal_route = 'addtask';
   final TextEditingController taskNameController = TextEditingController();
   final TextEditingController dueDateController = TextEditingController();
   final TextEditingController descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as List;
+    final args = (ModalRoute.of(context)?.settings.arguments as List?) ??
+        [Task("name", "date", "description", false), 0];
+
     final ind = args[1];
     final task = args[0];
 
@@ -58,7 +59,6 @@ class add_task extends StatelessWidget {
                               margin: EdgeInsets.symmetric(vertical: 5),
                               child: Center(
                                 child: Container(
-                                  width: 250,
                                   child: Column(
                                     children: [
                                       Text("Main task name",
@@ -69,6 +69,7 @@ class add_task extends StatelessWidget {
                                                 Color.fromARGB(255, 238, 0, 0),
                                           )),
                                       TextField(
+                                        key: Key("taskNameField"),
                                         controller: taskNameController,
                                         maxLines: 1,
                                         style: TextStyle(
@@ -107,6 +108,7 @@ class add_task extends StatelessWidget {
                                                 Color.fromARGB(255, 238, 0, 0),
                                           )),
                                       TextField(
+                                        key: Key("dueDateField"),
                                         controller: dueDateController,
                                         style: TextStyle(
                                             color: Color.fromARGB(
@@ -146,6 +148,7 @@ class add_task extends StatelessWidget {
                                                 Color.fromARGB(255, 238, 0, 0),
                                           )),
                                       TextField(
+                                        key: Key("descriptionField"),
                                         controller: descriptionController,
                                         maxLines: 2,
                                         style: TextStyle(

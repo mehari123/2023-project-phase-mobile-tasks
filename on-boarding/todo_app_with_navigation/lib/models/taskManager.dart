@@ -8,9 +8,9 @@ class TaskManager {
   Task task3 = Task("title3", "Foot ball 3", DateTime.now().toString(), false);
   List<Task> tasks = [];
 
-  TaskManager() {
-    defaultTasks();
-  }
+  // TaskManager() {
+  //   defaultTasks();
+  // }
 
   void defaultTasks() {
     tasks = [];

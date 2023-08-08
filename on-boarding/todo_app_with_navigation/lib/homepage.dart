@@ -31,7 +31,7 @@ class Frame1 extends StatelessWidget {
                 children: [
                   header(),
                   image(),
-                  task_list(),
+                  task_list(TaskManager()),
                 ],
               ),
             ],

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app_with_navigation/components/onboarding.dart';
 import 'package:todo_app_with_navigation/components/task_detail.dart';
 import 'header_view/header.dart';
 import 'image_view/image.dart';
 import 'components/task_list.dart';
-import 'components/add_task.dart';
+import 'features/presentation/add_task.dart';
 import 'homepage.dart';
 
 void main() {
@@ -21,6 +22,7 @@ class Myapp extends StatelessWidget {
         "/": (context) => const homepage(),
         "/addtask": (context) => add_task(),
         "/taskdetail": (context) => task_detail(),
+        "/onboarding": (context) => Onbaording(),
       },
     );
   }
