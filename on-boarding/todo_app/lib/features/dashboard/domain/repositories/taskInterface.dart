@@ -1,12 +1,37 @@
-import 'package:todo_app/features/dashboard/domain/entities/todo_task.dart';
+import 'package:todo_app/features/dashboard/domain/entities/task.dart';
 import 'package:dartz/dartz.dart';
-import '../../../../core/error/failurs.dart';
-import '../entities/task.dart';
+import '../../../../core/error/failure.dart';
 
-abstract class TaskInterface {
-  Future<Either<failure, List<ToDoTask>>> todoList();
-  Future<Either<failure, List<ToDoTask>>> addTask(ToDoTask task);
+class TaskInterface {
+  Future<Either<Failure, List<Tasks>>> tasksList() async {
+    try {
+      final task1 = Tasks(
+          title: "title1",
+          description: "description1",
+          dueDate: DateTime.now(),
+          isDone: false);
+      return Right([task1]);
+    } catch (e) {
+      return Left(Failure("error")); // Handle the failure case appropriately
+    }
+  }
+
+  Future<Either<Failure, List<Tasks>>> addTask(Tasks task) async {
+    try {
+      // Add your logic here to add the task
+      // For now, just returning an empty list as a placeholder
+      return Right([]);
+    } catch (e) {
+      return Left(Failure("error")); // Handle the failure case appropriately
+    }
+  }
 }
+
+
+
+
+
+
 
 
 

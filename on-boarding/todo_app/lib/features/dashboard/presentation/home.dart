@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../domain/entities/task.dart';
 import '../domain/entities/todo_task.dart';
 import '../domain/usecases/todo_list.dart';
 import 'components/task_list.dart';
@@ -8,7 +10,7 @@ import 'header_view/header.dart';
 import 'image_view/image.dart';
 
 class HomePage extends StatelessWidget {
-  final List<ToDoTask> task_lists;
+  final List<Tasks> task_lists;
 
   HomePage(this.task_lists);
 
@@ -46,10 +48,12 @@ class HomePage extends StatelessWidget {
           ),
           child: TextButton(
             onPressed: () {
-              TaskManager taskm = TaskManager();
-
-              Navigator.pushNamed(context, "/addtask",
-                  arguments: [task_lists, task_lists.length]);
+              var ind = task_lists.length - 1;
+              final result = GoRouter.of(context).go('/addtask/$ind');
+              // GoRouter.of(context).go(
+              //   '/addtask',
+              //   extra: [task_lists, task_lists.length],
+              // );
             },
             child: Text("Create task"),
           ),

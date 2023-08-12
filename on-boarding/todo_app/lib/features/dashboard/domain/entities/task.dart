@@ -1,11 +1,20 @@
-// ignore: depend_on_referenced_packages
 import 'package:equatable/equatable.dart';
+import 'package:meta/meta.dart';
 
-abstract class Task {
+class Tasks extends Equatable {
   String title;
   String description;
-  DateTime dueDate;
-  bool isDone;
+  DateTime? dueDate;
+  bool? isDone;
 
-  Task(this.title, this.description, this.dueDate, this.isDone);
+  Tasks(
+      {required this.title,
+      required this.description,
+      required this.dueDate,
+      required this.isDone})
+      : super();
+
+  @override
+  // TODO: implement props
+  List<Object?> get props => throw UnimplementedError();
 }

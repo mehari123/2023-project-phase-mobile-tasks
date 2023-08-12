@@ -1,26 +1,32 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import '../../../../core/usecases/usecase.dart';
+import '../entities/task.dart';
 import '../repositories/taskInterface.dart';
-import '../entities/todo_task.dart';
-import '../../../../core/error/failurs.dart';
+import '../../../../core/error/failure.dart';
 
-class TaskManager implements TaskInterface {
+class TodoLists extends UseCase<List<Tasks>, NoParams> {
   @override
-  Future<Either<failure, List<ToDoTask>>> todoList(
-      [List<ToDoTask>? tasks]) async {
-    final date = DateTime(2021, 10, 8);
-    List<ToDoTask> taskList = tasks ??
-        [
-          ToDoTask("title1", "description1", date, false),
-        ];
-
-    // You can perform further operations on taskList if needed
-
-    return Right(taskList);
+  Future<Either<Failure, List<Tasks>>> call(NoParams params) async {
+    final Either<Failure, List<Tasks>> eitherTasks =
+        await TaskInterface().tasksList();
+    //
+    final List<Tasks> _tasks = eitherTasks.fold(
+      (failure) {
+        // Handle failure case
+        print("Error: ${failure.toString()}");
+        return []; // or throw an exception if appropriate
+      },
+      (tasksList) => tasksList,
+    );
+    return Right(_tasks);
   }
 
-  @override
-  Future<Either<failure, List<ToDoTask>>> addTask(ToDoTask task) async {
-    return Right([]);
+  Future<List<Tasks>> getTasks() async {
+    final Either<Failure, List<Tasks>> eitherTasks =
+        await TodoLists().call(NoParams());
+
+    final List<Tasks> _tasks = eitherTasks.getOrElse(() => []);
+    return _tasks;
   }
 }

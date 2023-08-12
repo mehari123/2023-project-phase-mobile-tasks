@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
-import '../header_view/header.dart';
-import '../../domain/entities/todo_task.dart';
+import 'package:go_router/go_router.dart';
+import '../../../addEdit_task/presentation/header_view/header.dart';
+import '../../../addEdit_task/domain/entities/todo_task.dart';
+import '../../domain/entities/task.dart';
 
-class add_task extends StatelessWidget {
-  add_task({super.key});
+class AddTask extends StatelessWidget {
+  final int length;
+  final List<Tasks> task_lists;
+  AddTask({required this.length, required this.task_lists});
 
   final TextEditingController taskNameController = TextEditingController();
   final TextEditingController dueDateController = TextEditingController();
@@ -11,11 +15,11 @@ class add_task extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final args = (ModalRoute.of(context)?.settings.arguments as List?) ??
-        [ToDoTask("name", "date", "description", false), 0];
+    // final args = (ModalRoute.of(context)?.settings.arguments as List?) ??
+    //     [ToDoTask("name", "date", "description", false), 0];
 
-    final ind = args[1];
-    final task = args[0];
+    // final ind = args[1];
+    final task = task_lists[length];
 
     return Material(
       child: Container(
@@ -77,7 +81,7 @@ class add_task extends StatelessWidget {
                                                 255, 21, 21, 21)),
                                         decoration: InputDecoration(
                                           hintText:
-                                              '${task.name ?? 'your task title'}',
+                                              '${task.title ?? 'your task title'}',
                                           filled: true,
                                           fillColor: Color.fromARGB(
                                               255, 211, 211, 211),
@@ -116,7 +120,7 @@ class add_task extends StatelessWidget {
                                         maxLines: 1,
                                         decoration: InputDecoration(
                                           hintText:
-                                              "${task.date ?? 'your due date'}",
+                                              "${task.dueDate ?? 'your due date'}",
                                           filled: true,
                                           fillColor: Color.fromARGB(
                                               255, 229, 229, 229),
@@ -207,13 +211,15 @@ class add_task extends StatelessWidget {
                     ),
                     child: TextButton(
                       onPressed: () {
-                        ToDoTask newTask = ToDoTask(
-                          taskNameController.text,
-                          descriptionController.text,
-                          dueDateController.text,
-                          false,
+                        Tasks newTask = Tasks(
+                          title: taskNameController.text,
+                          description: descriptionController.text,
+                          dueDate: DateTime.parse(dueDateController.text),
+                          isDone: false,
                         );
-                        Navigator.pop(context, [newTask, ind]);
+                        task_lists.add(newTask);
+                        GoRouter.of(context).go('/');
+                        // Navigator.pop(context, task_lists);
                       },
                       child: Text("Add task"),
                     )),

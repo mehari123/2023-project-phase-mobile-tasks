@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class header extends StatelessWidget {
   const header({super.key});
@@ -12,7 +13,8 @@ class header extends StatelessWidget {
           icon: Icon(Icons.arrow_back, color: Color.fromARGB(255, 0, 0, 0)),
           onPressed: () {
             // Add your back button logic here
-            Navigator.pop(context);
+            // Navigator.pop(context);
+            GoRouter.of(context).go('/');
           },
         ),
         Text(
