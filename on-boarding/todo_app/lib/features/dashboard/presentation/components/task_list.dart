@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../domain/entities/task.dart';
-import '../../domain/usecases/todo_list.dart';
+import '../../domain/usecases/view_all_tasks.dart';
 import '../../domain/entities/todo_task.dart';
 import 'package:intl/intl.dart';
 

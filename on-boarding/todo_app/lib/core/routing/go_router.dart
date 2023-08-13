@@ -16,11 +16,13 @@ final GlobalKey<NavigatorState> _shellNavigatorKey =
 // final Future<List<Tasks>> _tasks = TodoLists().getTasks();
 final List<Tasks> _tasks = [
   Tasks(
+      id: "1",
       title: "title1",
       description: "description",
       dueDate: DateTime.now(),
       isDone: false),
   Tasks(
+      id: "2",
       title: "title2",
       description: "description",
       dueDate: DateTime.now(),

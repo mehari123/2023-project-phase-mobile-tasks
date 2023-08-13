@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:todo_app/features/dashboard/domain/entities/todo_task.dart';
 import '../../../core/usecases/usecase.dart';
 import '../domain/entities/task.dart';
-import '../domain/usecases/todo_list.dart';
+import '../domain/usecases/view_all_tasks.dart';
 import 'home.dart';
 
 class Dashboard extends StatelessWidget {

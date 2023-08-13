@@ -212,6 +212,7 @@ class AddTask extends StatelessWidget {
                     child: TextButton(
                       onPressed: () {
                         Tasks newTask = Tasks(
+                          id: "${task_lists.length + 1}",
                           title: taskNameController.text,
                           description: descriptionController.text,
                           dueDate: DateTime.parse(dueDateController.text),
