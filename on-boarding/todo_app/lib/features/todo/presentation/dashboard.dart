@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:todo_app/features/dashboard/domain/entities/todo_task.dart';
+import 'package:todo_app/features/todo/domain/entities/todo_task.dart';
 import '../../../core/usecases/usecase.dart';
 import '../domain/entities/task.dart';
 import '../domain/usecases/view_all_tasks.dart';

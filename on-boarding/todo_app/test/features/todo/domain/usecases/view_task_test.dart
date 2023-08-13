@@ -2,9 +2,9 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:dartz/dartz.dart';
 import 'package:todo_app/core/error/failure.dart';
-import 'package:todo_app/features/dashboard/domain/entities/task.dart';
-import 'package:todo_app/features/dashboard/domain/repositories/repository.dart'; // Adjust the import path
-import 'package:todo_app/features/dashboard/domain/usecases/view_task.dart'; // Adjust the import path
+import 'package:todo_app/features/todo/domain/entities/task.dart';
+import 'package:todo_app/features/todo/domain/repositories/repository.dart'; // Adjust the import path
+import 'package:todo_app/features/todo/domain/usecases/view_task.dart'; // Adjust the import path
 
 void main() {
   late ViewTask useCase;

@@ -1,11 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:todo_app/core/usecases/usecase.dart';
-import 'package:todo_app/features/dashboard/domain/entities/todo_task.dart';
+import 'package:todo_app/features/todo/domain/entities/todo_task.dart';
 import 'package:dartz/dartz.dart';
 import 'package:todo_app/core/error/failure.dart';
-import 'package:todo_app/features/dashboard/domain/usecases/view_all_tasks.dart';
-import '../../../../../lib/features/dashboard/domain/entities/task.dart';
+import 'package:todo_app/features/todo/domain/usecases/view_all_tasks.dart';
+import '../../../../../lib/features/todo/domain/entities/task.dart';
 // Import the actual implementation
 
 void main() {

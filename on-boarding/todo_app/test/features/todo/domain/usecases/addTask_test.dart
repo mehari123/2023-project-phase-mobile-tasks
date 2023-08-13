@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:dartz/dartz.dart';
-import 'package:todo_app/features/dashboard/domain/entities/task.dart';
-import 'package:todo_app/features/dashboard/domain/repositories/taskInterface.dart';
+import 'package:todo_app/features/todo/domain/entities/task.dart';
+import 'package:todo_app/features/todo/domain/repositories/taskInterface.dart';
 
 class MockTaskInterface extends Mock implements TaskInterface {}
 
