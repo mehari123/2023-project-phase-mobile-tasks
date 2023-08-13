@@ -1,4 +1,4 @@
-import 'package:todo_app/features/dashboard/domain/entities/task.dart';
+import 'package:todo_app/features/todo/domain/entities/task.dart';
 import 'package:dartz/dartz.dart';
 import '../../../../core/error/failure.dart';
 

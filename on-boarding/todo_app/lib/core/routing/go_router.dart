@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:todo_app/features/dashboard/presentation/components/task_detail.dart';
-import '../../features/dashboard/domain/entities/task.dart';
+import 'package:todo_app/features/todo/presentation/components/task_detail.dart';
+import '../../features/todo/domain/entities/task.dart';
 
-import '../../features/dashboard/presentation/components/add_task.dart';
-import '../../features/dashboard/presentation/dashboard.dart';
-import '../../features/dashboard/presentation/home.dart';
-import '../../features/dashboard/presentation/components/task_detail.dart';
+import '../../features/todo/presentation/components/add_task.dart';
+import '../../features/todo/presentation/dashboard.dart';
+import '../../features/todo/presentation/home.dart';
+import '../../features/todo/presentation/components/task_detail.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');
