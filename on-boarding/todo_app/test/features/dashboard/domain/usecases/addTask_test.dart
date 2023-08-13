@@ -16,6 +16,7 @@ void main() {
   test('should add a task and return a success result', () async {
     // Arrange
     final task = Tasks(
+        id: "1",
         title: "New Task",
         description: "Description",
         dueDate: DateTime.now(),
