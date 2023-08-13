@@ -2,10 +2,10 @@ import 'package:todo_app/features/todo/domain/entities/task.dart';
 import 'package:dartz/dartz.dart';
 import '../../../../core/error/failure.dart';
 
-abstract class TaskInterface {
+abstract class TodoRepository {
   Future<Either<Failure, Tasks>> viewTask(String id);
 
-  Future<Either<Failure, List<Tasks>>> tasksList();
+  Future<Either<Failure, List<Tasks>>> viewAllTask();
 
   Future<Either<Failure, List<Tasks>>> addTask(Tasks task);
 }

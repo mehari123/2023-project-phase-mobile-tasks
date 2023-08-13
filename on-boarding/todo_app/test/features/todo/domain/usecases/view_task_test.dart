@@ -35,7 +35,7 @@ void main() {
   });
 }
 
-class MockTaskRepository extends Mock implements TaskInterface {
+class MockTaskRepository extends Mock implements TodoRepository {
   @override
   Future<Either<Failure, Tasks>> viewTask(String id) async {
     // Return a mocked task for testing
