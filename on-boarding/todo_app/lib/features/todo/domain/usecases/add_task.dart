@@ -6,7 +6,7 @@ import '../repositories/repository.dart';
 import '../../../../core/error/failure.dart';
 
 class AddTask extends UseCase<Tasks, Params> {
-  final TaskInterface repository;
+  final todoRepository repository;
 
   AddTask(this.repository);
 
