@@ -5,7 +5,7 @@ import '../../../../core/error/failure.dart';
 abstract class TodoRepository {
   Future<Either<Failure, Tasks>> viewTask(String id);
 
-  Future<Either<Failure, List<Tasks>>> viewAllTask();
+  Future<Either<Failure, List<Tasks>>>? viewAllTask();
 
   Future<Either<Failure, List<Tasks>>> addTask(Tasks task);
 }
