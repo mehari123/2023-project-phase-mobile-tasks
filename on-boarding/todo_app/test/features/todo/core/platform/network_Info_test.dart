@@ -14,6 +14,7 @@ void main() {
   setUp(() {
     internetConnectionChecker = InternetConnectionChecker();
     networkInfo = NetworkInfoImpl(internetConnectionChecker);
+    networkInfo?.isConnected;
   });
 
   group('isConnected', () {

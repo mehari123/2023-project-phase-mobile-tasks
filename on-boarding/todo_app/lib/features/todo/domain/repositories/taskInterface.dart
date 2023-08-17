@@ -13,7 +13,8 @@ class TaskInterface {
           isDone: false);
       return Right([task1]);
     } catch (e) {
-      return Left(Failure("error")); // Handle the failure case appropriately
+      return Left(
+          Failure("error" as List)); // Handle the failure case appropriately
     }
   }
 

@@ -2,14 +2,15 @@ import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/task.dart';
+import '../repositories/repository.dart';
 import '../repositories/taskInterface.dart';
 import '../../../../core/error/failure.dart';
 
 class ViewAllTasks extends UseCase<List<Tasks>, NoParams> {
   @override
   Future<Either<Failure, List<Tasks>>> call(NoParams params) async {
-    final Either<Failure, List<Tasks>> eitherTasks =
-        await TaskInterface().tasksList();
+    final Either<Failure, List<Tasks>>? eitherTasks =
+        await TodoRepository().viewAllTask();
     //
     final List<Tasks> _tasks = eitherTasks.fold(
       (failure) {

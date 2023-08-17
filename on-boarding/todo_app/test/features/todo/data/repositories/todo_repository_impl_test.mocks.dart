@@ -205,16 +205,14 @@ class MockTodoLocalDataSource extends _i1.Mock
             _i7.Future<List<_i2.todoModel>>.value(<_i2.todoModel>[]),
       ) as _i7.Future<List<_i2.todoModel>>);
   @override
-  _i7.Future<List<_i2.todoModel>> cachTasks(List<_i2.todoModel>? task) =>
-      (super.noSuchMethod(
+  _i7.Future<void> cachTasks(List<_i2.todoModel>? task) => (super.noSuchMethod(
         Invocation.method(
           #cachTasks,
           [task],
         ),
-        returnValue: _i7.Future<List<_i2.todoModel>>.value(<_i2.todoModel>[]),
-        returnValueForMissingStub:
-            _i7.Future<List<_i2.todoModel>>.value(<_i2.todoModel>[]),
-      ) as _i7.Future<List<_i2.todoModel>>);
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
 }
 
 /// A class which mocks [TodoRepositoryImpl].
