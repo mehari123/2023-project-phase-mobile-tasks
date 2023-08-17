@@ -1,11 +1,11 @@
 import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:todo_app/features/todo/data/local/todolocal_data_source.dart';
+import 'package:todo_app/features/todo/data/resources/local/todolocal_data_source.dart';
 import 'package:todo_app/features/todo/data/models/todo_model.dart';
 import 'package:todo_app/features/todo/domain/usecases/view_all_tasks.dart';
 
-import '../../../../core/error/exception.dart';
+import '../../../../../core/error/exception.dart';
 
 class TodoLocalDataSourceImpl implements TodoLocalDataSource {
   final SharedPreferences sharedPreferences;

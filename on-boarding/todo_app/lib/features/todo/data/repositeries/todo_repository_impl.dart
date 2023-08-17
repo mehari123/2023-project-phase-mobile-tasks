@@ -8,8 +8,8 @@ import 'package:todo_app/features/todo/domain/entities/task.dart';
 import '../../../../core/error/exception.dart';
 import '../../../../core/platform/network_info.dart';
 import '../../domain/repositories/repository.dart';
-import '../local/todolocal_data_source.dart';
-import '../remote/todo_data_source.dart';
+import '../resources/local/todolocal_data_source.dart';
+import '../resources/remote/todo_data_source.dart';
 
 class TodoRepositoryImpl implements TodoRepository {
   final TodoRemoteDataSource remoteDataSource;
