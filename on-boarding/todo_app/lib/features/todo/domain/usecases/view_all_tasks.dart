@@ -1,32 +1,35 @@
-import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
-import '../../../../core/usecases/usecase.dart';
-import '../entities/task.dart';
-import '../repositories/taskInterface.dart';
-import '../../../../core/error/failure.dart';
+// import 'package:dartz/dartz.dart';
+// import 'package:equatable/equatable.dart';
+// import 'package:todo_app/features/todo/data/repositeries/todo_repository_impl.dart';
+// import 'package:todo_app/features/todo/data/resources/remote/toto_remote_data_sources_impl.dart';
+// import '../../../../core/usecases/usecase.dart';
+// import '../entities/task.dart';
+// import '../repositories/repository.dart';
+// import '../repositories/taskInterface.dart';
+// import '../../../../core/error/failure.dart';
 
-class ViewAllTasks extends UseCase<List<Tasks>, NoParams> {
-  @override
-  Future<Either<Failure, List<Tasks>>> call(NoParams params) async {
-    final Either<Failure, List<Tasks>> eitherTasks =
-        await TaskInterface().tasksList();
-    //
-    final List<Tasks> _tasks = eitherTasks.fold(
-      (failure) {
-        // Handle failure case
-        print("Error: ${failure.toString()}");
-        return []; // or throw an exception if appropriate
-      },
-      (tasksList) => tasksList,
-    );
-    return Right(_tasks);
-  }
+// class ViewAllTasks extends UseCase<List<Tasks>, NoParams> {
+//   @override
+//   Future<Either<Failure, List<Tasks>>> call(NoParams params) async {
+//     final Either<Failure, List<Tasks>>? eitherTasks =
+//         await TodoRemoteDataSourceImpl().viewAllTask();
+//     //
+//     final List<Tasks> _tasks = eitherTasks.fold(
+//       (failure) {
+//         // Handle failure case
+//         print("Error: ${failure.toString()}");
+//         return []; // or throw an exception if appropriate
+//       },
+//       (tasksList) => tasksList,
+//     );
+//     return Right(_tasks);
+//   }
 
-  Future<List<Tasks>> getTasks() async {
-    final Either<Failure, List<Tasks>> eitherTasks =
-        await ViewAllTasks().call(NoParams());
+//   Future<List<Tasks>> getTasks() async {
+//     final Either<Failure, List<Tasks>> eitherTasks =
+//         await ViewAllTasks().call(NoParams());
 
-    final List<Tasks> _tasks = eitherTasks.getOrElse(() => []);
-    return _tasks;
-  }
-}
+//     final List<Tasks> _tasks = eitherTasks.getOrElse(() => []);
+//     return _tasks;
+//   }
+// }

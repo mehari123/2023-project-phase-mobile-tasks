@@ -10,10 +10,10 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:todo_app/core/error/exception.dart' as _i11;
 import 'package:todo_app/core/error/failure.dart' as _i9;
 import 'package:todo_app/core/platform/network_info.dart' as _i5;
-import 'package:todo_app/features/todo/data/local/todolocal_data_source.dart'
+import 'package:todo_app/features/todo/data/resources/local/todolocal_data_source.dart'
     as _i4;
 import 'package:todo_app/features/todo/data/models/todo_model.dart' as _i2;
-import 'package:todo_app/features/todo/data/remote/todo_data_source.dart'
+import 'package:todo_app/features/todo/data/resources/remote/todo_data_source.dart'
     as _i3;
 import 'package:todo_app/features/todo/data/repositeries/todo_repository_impl.dart'
     as _i8;
@@ -205,16 +205,14 @@ class MockTodoLocalDataSource extends _i1.Mock
             _i7.Future<List<_i2.todoModel>>.value(<_i2.todoModel>[]),
       ) as _i7.Future<List<_i2.todoModel>>);
   @override
-  _i7.Future<List<_i2.todoModel>> cachTasks(List<_i2.todoModel>? task) =>
-      (super.noSuchMethod(
+  _i7.Future<void> cachTasks(List<_i2.todoModel>? task) => (super.noSuchMethod(
         Invocation.method(
           #cachTasks,
           [task],
         ),
-        returnValue: _i7.Future<List<_i2.todoModel>>.value(<_i2.todoModel>[]),
-        returnValueForMissingStub:
-            _i7.Future<List<_i2.todoModel>>.value(<_i2.todoModel>[]),
-      ) as _i7.Future<List<_i2.todoModel>>);
+        returnValue: _i7.Future<void>.value(),
+        returnValueForMissingStub: _i7.Future<void>.value(),
+      ) as _i7.Future<void>);
 }
 
 /// A class which mocks [TodoRepositoryImpl].

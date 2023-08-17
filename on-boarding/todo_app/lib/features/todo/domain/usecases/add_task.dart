@@ -5,16 +5,16 @@ import '../entities/task.dart';
 import '../repositories/repository.dart';
 import '../../../../core/error/failure.dart';
 
-class AddTask extends UseCase<Tasks, Params> {
-  final todoRepository repository;
+// class AddTask extends UseCase<Tasks, Params> {
+//   final todoRepository repository;
 
-  AddTask(this.repository);
+//   AddTask(this.repository);
 
-  @override
-  Future<Either<Failure, Tasks>> call(Params params) async {
-    return await Right(repository.addTask(params.task));
-  }
-}
+//   @override
+//   Future<Either<Failure, Tasks>> call(Params params) async {
+//     return await Right(repository.addTask(params.task));
+//   }
+// }
 
 class Params extends Equatable {
   final Tasks task;

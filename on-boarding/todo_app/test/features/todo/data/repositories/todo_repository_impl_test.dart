@@ -2,7 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:dartz/dartz.dart';
 import 'package:mockito/annotations.dart';
-import 'package:equatable/equatable.dart';
 import 'package:todo_app/core/error/exception.dart';
 import 'package:todo_app/core/error/failure.dart';
 // import 'package:my_app/mocks.dart';
@@ -16,9 +15,9 @@ import 'package:todo_app/core/error/failure.dart';
   MockSpec<CacheException>(),
 ])
 import 'package:todo_app/core/platform/network_info.dart';
-import 'package:todo_app/features/todo/data/local/todolocal_data_source.dart';
+import 'package:todo_app/features/todo/data/resources/local/todolocal_data_source.dart';
 import 'package:todo_app/features/todo/data/models/todo_model.dart';
-import 'package:todo_app/features/todo/data/remote/todo_data_source.dart';
+import 'package:todo_app/features/todo/data/resources/remote/todo_data_source.dart';
 import 'package:todo_app/features/todo/data/repositeries/todo_repository_impl.dart';
 import 'package:todo_app/features/todo/domain/entities/task.dart';
 
