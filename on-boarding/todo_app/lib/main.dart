@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:todo_app/core/routing/go_router.dart';
 import './core/theme/colorschme.dart';
 import './core/routing/go_router.dart';
+import 'injection.dart' as di;
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await di.init();
   runApp(const Myapp());
 }
 

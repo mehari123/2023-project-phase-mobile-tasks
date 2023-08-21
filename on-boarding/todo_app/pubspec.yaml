@@ -1,51 +1,46 @@
 name: todo_app
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.6 <4.0.0'
+  sdk: ">=3.0.6 <4.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
-
+  bloc: ^8.1.1
+  connectivity: ^3.0.6
   cupertino_icons: ^1.0.2
-  bloc: ^7.0.0
   dartz: ^0.10.1
   equatable: ^2.0.5
-  mockito: ^5.4.2
-  get_it: ^7.6.0
-  connectivity: ^3.0.6
-  http: ^1.1.0
-  shared_preferences: ^2.2.0
-  flutter_bloc: ^7.3.3
-  lint: ^2.1.2
-  intl: ^0.18.1
-  go_router: ^10.0.0
+  flutter:
+    sdk: flutter
+  flutter_bloc: ^8.1.3
+  flutter_top_blocked_bouncing_scroll_physics: ^1.0.0
   freezed_annotation: ^2.4.1
+  get_it: ^7.6.0
+  go_router: ^10.0.0
+  http: ^1.1.0
   internet_connection_checker: ^1.0.0+1
-
+  intl: ^0.18.1
+  lint: ^2.1.2
+  mockito: ^5.4.2
+  shared_preferences: ^2.2.0
+  bloc_test: ^9.1.4
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  build_runner: ^2.4.6
 
   flutter_lints: ^2.0.2
+  flutter_test:
+    sdk: flutter
   freezed: ^2.4.1
   json_annotation: ^4.8.1
   json_serializable: ^6.7.1
-  build_runner: ^2.4.6
-
 
 flutter:
-
   uses-material-design: true
 
   assets:
-
     - assets/images/
-
-

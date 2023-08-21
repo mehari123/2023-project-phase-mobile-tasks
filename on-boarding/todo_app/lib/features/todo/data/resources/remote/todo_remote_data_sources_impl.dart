@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:todo_app/features/todo/data/resources/remote/todo_data_source.dart';
 import 'package:http/http.dart' as http;
 import 'package:todo_app/features/todo/domain/usecases/view_all_tasks.dart';
@@ -18,9 +20,21 @@ class TodoRemoteDataSourceImpl implements TodoRemoteDataSource {
   bool? get stringify => throw UnimplementedError();
 
   @override
-  Future<List<todoModel>> viewAllTask() {
+  Future<todoModel> viewAllTask() async {
     // TODO: implement viewAllTask
-    throw UnimplementedError();
+    String apiUrl =
+        'https://api-nodejs-todolist.herokuapp.com/task?completed=true'; // Use the correct URL here
+    Uri uri = Uri.parse(apiUrl);
+
+    final response = await client.get(
+      uri,
+      headers: {
+        'Authorization': 'Bearer your_token_here',
+        'Content-Type': 'application/json'
+      },
+    );
+
+    return todoModel.fromJson(json.decode(response.body));
   }
 
   // @override

@@ -1,15 +1,14 @@
 import 'package:dartz/dartz.dart';
 
 import 'package:todo_app/core/error/failure.dart';
-import 'package:todo_app/features/todo/data/models/todo_model.dart';
 
 import 'package:todo_app/features/todo/domain/entities/task.dart';
 
 import '../../../../core/error/exception.dart';
 import '../../../../core/platform/network_info.dart';
 import '../../domain/repositories/repository.dart';
-import '../resources/local/todolocal_data_source.dart';
-import '../resources/remote/todo_data_source.dart';
+import '../local/todolocal_data_source.dart';
+import '../remote/todo_remot_data_source.dart';
 
 class TodoRepositoryImpl implements TodoRepository {
   final TodoRemoteDataSource remoteDataSource;
@@ -32,21 +31,24 @@ class TodoRepositoryImpl implements TodoRepository {
   @override
   Future<Either<Failure, List<Tasks>>>? viewAllTask() async {
     final neti = await networkInfo.isConnected;
-    final netR = await neti ?? false;
+    final netR = neti ?? false;
     if (netR) {
       try {
-        final remoteResult = await remoteDataSource.viewAllTask();
-        localDataSource.cachTasks(remoteResult);
-        return Right(await remoteDataSource.viewAllTask());
+        final taskV = await localDataSource.viewAllTask();
+        return Right(taskV);
+
+        // final remoteResult = await remoteDataSource.viewAllTask();
+        // localDataSource.cachTasks(remoteResult);
+        // return Right(await remoteDataSource.viewAllTask());
       } on ServerException {
-        return Left(ServerFailure());
+        return Left(ServerFailure("server failure"));
       }
     } else {
       try {
         final taskV = await localDataSource.viewAllTask();
         return Right(taskV);
       } on CacheException {
-        return Left(CacheFailure());
+        return Left(CacheFailure("cach faulure"));
       }
     }
   }

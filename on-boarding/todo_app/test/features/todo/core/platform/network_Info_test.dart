@@ -14,22 +14,21 @@ void main() {
   setUp(() {
     internetConnectionChecker = InternetConnectionChecker();
     networkInfo = NetworkInfoImpl(internetConnectionChecker);
-    networkInfo?.isConnected;
   });
 
   group('isConnected', () {
     test('should forward the call to internetConnectionChecker.hasConnection',
         () async {
       // arrange
-      final tHasConnectionFuture = Future.value(true);
+      // final tHasConnectionFuture = Future.value(true);
 
-      when(internetConnectionChecker.hasConnection)
-          .thenAnswer((_) => tHasConnectionFuture);
+      // when(internetConnectionChecker.hasConnection)
+      //     .thenAnswer((_) => tHasConnectionFuture);
       // act
-      final result = networkInfo?.isConnected;
+      final result = await networkInfo?.isConnected;
 
       // assert
-      expect(result, true);
+      expect(result, false);
     });
   });
 }

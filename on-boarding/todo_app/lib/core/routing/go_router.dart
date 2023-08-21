@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:todo_app/features/todo/presentation/components/task_detail.dart';
+import 'package:todo_app/features/todo/presentation/pages/components/task_detail.dart';
 import '../../features/todo/domain/entities/task.dart';
 
-import '../../features/todo/presentation/components/add_task.dart';
-import '../../features/todo/presentation/dashboard.dart';
-import '../../features/todo/presentation/home.dart';
-import '../../features/todo/presentation/components/task_detail.dart';
+import '../../features/todo/presentation/pages/components/add_task.dart';
+import '../../features/todo/presentation/pages/dashboard.dart';
+import '../../features/todo/presentation/pages/home.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey<NavigatorState>(debugLabel: 'root');
@@ -48,7 +47,7 @@ class GoRouterProvider {
               path: '/',
               name: "homepage",
               pageBuilder: (context, state) {
-                return NoTransitionPage(child: HomePage(_tasks));
+                return NoTransitionPage(child: HomePage());
               },
             ),
             GoRoute(

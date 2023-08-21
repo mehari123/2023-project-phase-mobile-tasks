@@ -1,5 +1,6 @@
 import 'package:meta/meta.dart';
 import '../../domain/entities/task.dart';
+import 'dart:convert';
 
 class todoModel extends Tasks {
   todoModel(
@@ -33,7 +34,7 @@ class todoModel extends Tasks {
       'id': id,
       'title': title,
       'description': description,
-      'dueDate': dueDate,
+      'dueDate': dueDate.toString(),
       'isDone': isDone,
     };
   }

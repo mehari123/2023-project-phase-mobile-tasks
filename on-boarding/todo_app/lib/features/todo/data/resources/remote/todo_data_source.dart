@@ -6,7 +6,7 @@ abstract class TodoRemoteDataSource extends Equatable {
 
   // Future<todoModel> viewTask(String id);
 
-  Future<List<todoModel>> viewAllTask();
+  Future<todoModel> viewAllTask();
 
   // Future<List<todoModel>> addTask(todoModel task);
 }
